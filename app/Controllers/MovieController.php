@@ -73,7 +73,6 @@ class MovieController extends BaseController
             $data['slug'] = Str::slug($movie->title, '-');
 
             $movie->update($data);
-
             return redirect()->route('movies.show', $movie->id);
     }
 
