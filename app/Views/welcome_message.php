@@ -197,7 +197,7 @@
 
 <!-- HEADER: MENU + HEROE SECTION -->
 <header>
-
+<h1>sium</h1>
 	<div class="menu">
 		<ul>
 			<li class="logo"><a href="https://codeigniter.com" target="_blank"><img height="44" title="CodeIgniter Logo"

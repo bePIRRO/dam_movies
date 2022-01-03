@@ -8,6 +8,7 @@ class MovieController extends BaseController
 {
     public function index()
     {
+        $db = \Config\Database::connect('db_dam_movies');
         $movies = Movie::orderBy('id', 'title')->paginate(10);
         return view('movies.index', compact('movies'));
     }

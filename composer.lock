@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ac5eb9263737e1bd7e2cf5d5ec1e975",
+    "content-hash": "ccb7912ca6611602b028e98964b706d4",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -63,6 +63,111 @@
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
             "time": "2021-11-08T15:09:23+00:00"
+        },
+        {
+            "name": "easyswoole/mysqli",
+            "version": "2.2.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easy-swoole/mysqli.git",
+                "reference": "9c4aac7c111c0dc073b53a40006606e44c11079c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easy-swoole/mysqli/zipball/9c4aac7c111c0dc073b53a40006606e44c11079c",
+                "reference": "9c4aac7c111c0dc073b53a40006606e44c11079c",
+                "shasum": ""
+            },
+            "require": {
+                "easyswoole/spl": "^1.2"
+            },
+            "require-dev": {
+                "easyswoole/phpunit": "^1.0",
+                "easyswoole/swoole-ide-helper": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasySwoole\\Mysqli\\": "src/",
+                    "EasySwoole\\Mysqli\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "YF",
+                    "email": "291323003@qq.com"
+                }
+            ],
+            "description": "An efficient swoole framework",
+            "homepage": "https://www.easyswoole.com/",
+            "keywords": [
+                "async",
+                "easyswoole",
+                "framework",
+                "swoole"
+            ],
+            "support": {
+                "issues": "https://github.com/easy-swoole/mysqli/issues",
+                "source": "https://github.com/easy-swoole/mysqli/tree/2.2.11"
+            },
+            "time": "2021-09-22T06:40:09+00:00"
+        },
+        {
+            "name": "easyswoole/spl",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easy-swoole/spl.git",
+                "reference": "5549de955cee82a9c7edd8ea34d4df4d14b51b38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easy-swoole/spl/zipball/5549de955cee82a9c7edd8ea34d4df4d14b51b38",
+                "reference": "5549de955cee82a9c7edd8ea34d4df4d14b51b38",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "easyswoole/phpunit": "^1.0",
+                "easyswoole/swoole-ide-helper": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasySwoole\\Spl\\": "src/",
+                    "EasySwoole\\Spl\\Test\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "YF",
+                    "email": "291323003@qq.com"
+                }
+            ],
+            "description": "php stander lib",
+            "homepage": "https://www.easyswoole.com/",
+            "keywords": [
+                "async",
+                "easyswoole",
+                "framework",
+                "swoole"
+            ],
+            "support": {
+                "issues": "https://github.com/easy-swoole/spl/issues",
+                "source": "https://github.com/easy-swoole/spl/tree/1.4.0"
+            },
+            "time": "2021-03-17T07:40:09+00:00"
         },
         {
             "name": "kint-php/kint",

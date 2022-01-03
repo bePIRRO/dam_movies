@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => 'root',
-        'database' => '',
+        'database' => 'db_dam_movies',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => 'db_dam_movies',
         'pConnect' => false,
