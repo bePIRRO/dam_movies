@@ -198,6 +198,13 @@
 <!-- HEADER: MENU + HEROE SECTION -->
 <header>
 <h1>sium</h1>
+<?php
+	$url = 'https://api.themoviedb.org/3/discover/movie/?api_key=f696298dbe386fee32974e49047db33d&language=it-IT';
+	
+	$obj = json_decode(file_get_contents($url), true);
+
+	print_r($obj);
+?>
 	<div class="menu">
 		<ul>
 			<li class="logo"><a href="https://codeigniter.com" target="_blank"><img height="44" title="CodeIgniter Logo"
