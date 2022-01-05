@@ -198,29 +198,6 @@
 <!-- HEADER: MENU + HEROE SECTION -->
 <header>
 <h1>sium</h1>
-<?php
-	$test = [
-		['page' => 1,
-			[
-				'title' => 'sium',
-				'description' => 'audfiahfaio',
-				'genre' => 'drama',
-			],
-			[
-				'title' => 'urlo del sium',
-				'description' =>'fdauifniaudsf',
-				'genre' => 'comico'
-			],
-		],
-	];
-
-	$url = 'https://api.themoviedb.org/3/discover/movie/?api_key=f696298dbe386fee32974e49047db33d&language=it-IT';
-	
-	$obj = json_decode(file_get_contents($url), true);
-
-	var_dump($obj['results'][0]['title']);
-	
-?>
 	<div class="menu">
 		<ul>
 			<li class="logo"><a href="https://codeigniter.com" target="_blank"><img height="44" title="CodeIgniter Logo"

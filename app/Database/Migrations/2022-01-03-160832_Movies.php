@@ -17,7 +17,7 @@ class Movies extends Migration
             
             'title' => [
                 'type' => 'VARCHAR',
-                'constraint' => 100,
+                'constraint' => 200,
             ],
 
             'description' => [
@@ -26,7 +26,7 @@ class Movies extends Migration
 
             'genre' => [
                 'type' => 'VARCHAR',
-                'constraint' => '30',
+                'constraint' => 200,
             ],
         ]);
         $this->forge->addKey('id', true);
