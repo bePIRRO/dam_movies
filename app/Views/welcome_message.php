@@ -199,11 +199,27 @@
 <header>
 <h1>sium</h1>
 <?php
+	$test = [
+		['page' => 1,
+			[
+				'title' => 'sium',
+				'description' => 'audfiahfaio',
+				'genre' => 'drama',
+			],
+			[
+				'title' => 'urlo del sium',
+				'description' =>'fdauifniaudsf',
+				'genre' => 'comico'
+			],
+		],
+	];
+
 	$url = 'https://api.themoviedb.org/3/discover/movie/?api_key=f696298dbe386fee32974e49047db33d&language=it-IT';
 	
 	$obj = json_decode(file_get_contents($url), true);
 
-	print_r($obj);
+	var_dump($obj['results'][0]['title']);
+	
 ?>
 	<div class="menu">
 		<ul>
