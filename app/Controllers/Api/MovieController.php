@@ -8,8 +8,8 @@ class MovieController extends BaseController
 {
     public function index()
     {
-        $db = \Config\Database::connect('db_dam_movies');
-        $movies = Movie::orderBy('id', 'title')->paginate(5);
+        $movie = new Movie();
+        $data['movies'] = $movie->findAll()->paginate(5);
         
         return rensponse()->json($movies);
     }

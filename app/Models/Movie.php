@@ -2,14 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use CodeIgniter\Model;
 
 class Movie extends Model
 {
-    use SoftDeleletes;
+    /*use SoftDeleletes;
     protected $fillable = ['title', 'description', 'genre'];
     public function movie()
     {
         return $this->belongsTo('App\Models\Movie');
-    }
+    }*/
+
+    protected $table = 'movies';
+    protected $primaryKey = 'id';
+    protected $allowedFields = [
+        'title',
+        'description',
+        'genre'
+    ];
 }

@@ -3,14 +3,15 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Movie;
 
 class MovieController extends BaseController
 {
     public function index()
     {
-        $db = \Config\Database::connect('db_dam_movies');
-        $movies = Movie::orderBy('id', 'title')->paginate(5);
-        return view('movies.index', compact('movies'));
+        $movie = new Movie();
+        $data['movies'] = $movie->findAll();
+        return view('welcome_message.php', $data);
     }
 
     public function create()
@@ -18,7 +19,7 @@ class MovieController extends BaseController
         $movie = new Movie();
         $save = 'Crea';
 
-        return view('movies.create', compact('movie', 'save'));
+        return view('movies/create.php', compact('movie', 'save'));
     }
 
     public function store(Request $request)
@@ -41,19 +42,19 @@ class MovieController extends BaseController
 
         $movie->save();
 
-        return redirect()->route('movies.show', compact('movie'));
+        return redirect()->route('movies/show', compact('movie'));
     }
 
     public function show(Movie $movie)
     {
-        return view('movies.show', compact('movie'));
+        return view('movies/show', compact('movie'));
     }
 
     public function edit(Movie $movie)
     {
         $save = 'Modifica';
         
-        return view('movies.edit', compact('movie', 'save'));
+        return view('movies/edit', compact('movie', 'save'));
     }
 
     public function update(Request $request, Movie $movie)
@@ -74,12 +75,12 @@ class MovieController extends BaseController
             $data['slug'] = Str::slug($movie->title, '-');
 
             $movie->update($data);
-            return redirect()->route('movies.show', $movie->id);
+            return redirect()->route('movies/show', $movie->id);
     }
 
     public function destroy(Movie $movie)
     {
         $movie->delete();
-        return redirect()->route('movies.index')->with('alert-message', 'Film eliminato con successo.')->with('alert-type', 'success');
+        return redirect()->route('index')->with('alert-message', 'Film eliminato con successo.')->with('alert-type', 'success');
     }
 }
