@@ -33,7 +33,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 
+// $routes->get('/', 'MovieController::index');
 $routes->get('/', 'MovieController::index');
+$routes->get('movies', 'MovieController::show');
 
 /*
  * --------------------------------------------------------------------

@@ -194,6 +194,11 @@
 				color: rgba(255, 255, 255, .8);
 			}
 		}
+
+		.dropdown:hover .dropdown-menu {
+			display: block;
+			right: 1%;
+		}
 	</style>
 </head>
 <body>
@@ -213,6 +218,7 @@
                     <th>Titolo</th>
                     <th>Descrizione</th>
                     <th>Genere</th>
+					<th>Azioni</th>
                 </tr>
             </thead>
             <tbody>
@@ -222,6 +228,21 @@
                     <td><?php echo $movie['title'] ?></td>
                     <td><?php echo $movie['description'] ?></td>
                     <td><?php echo $movie['genre'] ?></td>
+					<td class="">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a href="" class="dropdown-item">Vedi</a>
+						<a href="" class=" dropdown-item">Modifica</a>
+						<form class="d-inline delete-button" action="" method="POST">
+						<!-- @csrf
+						@method('DELETE') -->
+						<input type="submit" value="Elimina" class="dropdown-item">
+						</form>
+						</div>
+					</div>  
+        			</td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>
