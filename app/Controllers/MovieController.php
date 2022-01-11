@@ -11,12 +11,15 @@ class MovieController extends BaseController
     {
         $movie = new Movie();
         $data['movies'] = $movie->findAll();
-        return view('welcome_message.php', $data);
+
+        $data['pagination_link'] = $movie->pager;
+        
+        return view('home', $data);
     }
 
     public function add()
     {
-        return view('add_data');
+        return view('create');
     }
 
     public function add_validation()
@@ -26,12 +29,12 @@ class MovieController extends BaseController
         $error = $this->validate([
             'title' => 'required|min_length[1]',
             'description',
-            'genre' => 'required!min_length[3]'
+            'genre' => 'required|min_length[3]'
         ]);
 
         if(!$error)
         {
-            echo view('add_data', [
+            echo view('create', [
                 'error' => $this->validator
             ]);
         }

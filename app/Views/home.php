@@ -222,8 +222,17 @@
 			$session->getFlashdata("success") . '</div>';
 		}
 	?>
-
-<table>
+		<div class="card-header">
+            <div class="row">
+                <div class="col">Sample Data</div>
+                <div class="col text-right">
+					<a href="<?php echo base_url("/movies/create") ?>" class="btn btn-success">
+						Aggiungi film
+					</a>
+                </div>
+            </div>
+        </div>
+		<table>
             <thead>
                 <tr>
                     <th>Titolo</th>

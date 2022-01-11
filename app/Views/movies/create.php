@@ -16,16 +16,9 @@
     ?>
 
     <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col">Sample Data</div>
-                <div class="col text-right">
-
-                </div>
-            </div>
         </div>
         <div class="card-body">
-            <form action="<?php echo base_url("add_validation") ?>" method="post">
+            <form action="<?php echo base_url("/create") ?>" method="post">
                 <div class="form-group">
                     <label for="title">Titolo</label>
                     <input type="text" name="title" class="form-control">

@@ -35,7 +35,7 @@ $routes->setAutoRoute(true);
 
 // $routes->get('/', 'MovieController::index');
 $routes->get('/', 'MovieController::index');
-$routes->get('movies', 'MovieController::show');
+$routes->get('movies/', 'MovieController::show');
 
 /*
  * --------------------------------------------------------------------
