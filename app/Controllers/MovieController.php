@@ -14,35 +14,42 @@ class MovieController extends BaseController
         return view('welcome_message.php', $data);
     }
 
-    public function create()
+    public function add()
     {
-        $movie = new Movie();
-        $save = 'Crea';
-
-        return view('movies/create.php', compact('movie', 'save'));
+        return view('add_data');
     }
 
-    public function store(Request $request)
+    public function add_validation()
     {
-        $request->validate([
-            'title' => 'required|string|unique:movies',
-            'description' => 'required|string',
-            'genre' => 'required|string',
-        ],
-        [
-            'required' => 'Il campo :attribute è obbligatorio',
-            'title.unique' => 'Il titolo esiste già'
+        helper(['form', 'url']);
+
+        $error = $this->validate([
+            'title' => 'required|min_length[1]',
+            'description',
+            'genre' => 'required!min_length[3]'
         ]);
 
-        $data = $request->all();
+        if(!$error)
+        {
+            echo view('add_data', [
+                'error' => $this->validator
+            ]);
+        }
+        else
+        {
+            $movie = new Movie();
+            $movie->save([
+                'name' => $this->request->getVar('name'),
+                'description' => $this->request->getVar('description'),
+                'genre' => $this->request->getVar('genre')
+            ]);
 
-        $movie = new Movie();
-        $movie->fill($data);
-        $movie->slug= Str::slug($movie->title, '-');
+            $session = \Config\Services::session();
 
-        $movie->save();
+            $session->setFlashdata('success', 'Film aggiunto con successo');
 
-        return redirect()->route('movies/show', compact('movie'));
+            return $this->response->redirect(site_url('/'));
+        }
     }
 
     public function show(Movie $movie)
