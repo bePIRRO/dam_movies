@@ -226,7 +226,7 @@
             <div class="row">
                 <div class="col">Sample Data</div>
                 <div class="col text-right">
-					<a href="<?php echo base_url("/movies/create") ?>" class="btn btn-success">
+					<a href="<?php echo base_url("create") ?>" class="btn btn-success">
 						Aggiungi film
 					</a>
                 </div>
@@ -253,12 +253,11 @@
 						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a href="" class="dropdown-item">Vedi</a>
 						<a href="" class=" dropdown-item">Modifica</a>
 						<form class="d-inline delete-button" action="" method="POST">
 						<!-- @csrf
 						@method('DELETE') -->
-						<input type="submit" value="Elimina" class="dropdown-item">
+						<button type="button" onclick="delete_data(<?php echo $movie['id'] ?>)" class="dropdown-item">Elimina</button>
 						</form>
 						</div>
 					</div>  
@@ -285,6 +284,13 @@
 			var menuItem = menuItems[i];
 			menuItem.classList.toggle("hidden");
 		}
+	}
+
+	function delete_data(id) {
+		if(confirm('Sei sicuro di voler eliminare il film?')) {
+			window.location.href="<?php echo base_url(); ?>/delete/"+id;
+		}
+		return false;
 	}
 </script>
 

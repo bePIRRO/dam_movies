@@ -33,9 +33,11 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 
-// $routes->get('/', 'MovieController::index');
 $routes->get('/', 'MovieController::index');
-$routes->get('movies/', 'MovieController::show');
+$routes->add('/create', 'MovieController::add');
+$routes->add('/create_validation', 'MovieController::add_validation');
+$routes->delete('/delete/(:id)', 'MovieController::delete');
+
 
 /*
  * --------------------------------------------------------------------

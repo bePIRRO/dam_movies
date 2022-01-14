@@ -55,42 +55,17 @@ class MovieController extends BaseController
         }
     }
 
-    public function show(Movie $movie)
+ 
+
+    public function delete($id)
     {
-        return view('movies/show', compact('movie'));
-    }
+        $movie = new Movie();
 
-    public function edit(Movie $movie)
-    {
-        $save = 'Modifica';
-        
-        return view('movies/edit', compact('movie', 'save'));
-    }
+        $movie->where('id', $id)->delete($id);
 
-    public function update(Request $request, Movie $movie)
-    {
-        $request->validate(
-            [
-                'title' => ['required', 'string', Rule::unique('movies')->ignore($movie->id)],
-                'description' => 'required|string',
-                'genre' => 'required|string',
-            ],
-            [
-                'required' => 'Il campo :attribute è obbligatorio',
-                'title.unique' => 'Il titolo esiste già'
-            ]
-            );
+        $session = \Config\Services::session();
+        $session->setFlashdata('success', 'Film eliminato');
 
-            $data = $request->all();
-            $data['slug'] = Str::slug($movie->title, '-');
-
-            $movie->update($data);
-            return redirect()->route('movies/show', $movie->id);
-    }
-
-    public function destroy(Movie $movie)
-    {
-        $movie->delete();
-        return redirect()->route('index')->with('alert-message', 'Film eliminato con successo.')->with('alert-type', 'success');
+        return $this->response->redirect(site_url('/'));
     }
 }

@@ -18,7 +18,7 @@
     <div class="card">
         </div>
         <div class="card-body">
-            <form action="<?php echo base_url("/create") ?>" method="post">
+            <form action="<?php echo base_url("create_validation") ?>" method="post">
                 <div class="form-group">
                     <label for="title">Titolo</label>
                     <input type="text" name="title" class="form-control">
@@ -34,8 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Descrizione</label>
-                    <textarea rows="4" form="usrform" name="description" class="form-control">
-                        
+                    <textarea rows="4" form="userform" name="description" class="form-control"></textarea>    
                 </div>
                     <div class="form-group">
                         <label for="genre">Genere</label>
