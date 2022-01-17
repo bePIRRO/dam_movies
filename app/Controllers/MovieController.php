@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Movie;
 
-class MovieController extends BaseController
+class Moviecontroller extends BaseController
 {
     public function index()
     {
@@ -67,5 +67,11 @@ class MovieController extends BaseController
         $session->setFlashdata('success', 'Film eliminato');
 
         return $this->response->redirect(site_url('/'));
+    }
+
+
+    public function show($movie)
+    {
+        return view('show');
     }
 }

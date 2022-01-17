@@ -195,85 +195,117 @@
 			}
 		}
 
-		.dropdown:hover .dropdown-menu {
+		 .dropdown:hover .dropdown-menu {
 			display: block;
 			right: 1%;
+		}
+
+		tr {
+			border-bottom: 1px solid #ccc;
+			min-height: 90px;
+			height: 90px;
+		}
+
+		.container {
+			min-width: 1800px;
+		}
+
+		.ellipsis {
+    		overflow: hidden;
+    		white-space: nowrap;
+    		text-overflow: ellipsis;
 		}
 	</style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header>
-<h1>sium</h1>
+<header class="p-3">
+<h1 class="text-center">Movies</h1>
 
 </header>
 
 <!-- main -->
 
 <main>
+    <section class="container">
+        <?php
+            $session = \Config\Services::session();
 
-	<?php
-		$session = \Config\Services::session();
+            if($session->getFlashdata("success")) {
+                echo '<div class="alert alert-success">' . $session->getFlashdata("success") . '</div>';
+            }
+        ?>
 
-		if($session->getFlashdata('success'))
-		{
-			echo '<div class="alert alert-success">'. 
-			$session->getFlashdata("success") . '</div>';
-		}
-	?>
-		<div class="card-header">
-            <div class="row">
-                <div class="col">Sample Data</div>
-                <div class="col text-right">
-					<a href="<?php echo base_url("create") ?>" class="btn btn-success">
-						Aggiungi film
-					</a>
+        <div class="card">
+            <!-- card header -->
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center"><h4>Lista Film</h4></div>
+                    <div class="col-6 text-end">
+                        <a href="<?php echo base_url("create") ?>" class="btn btn-primary">Aggiungi Film</a>
+                    </div>
                 </div>
             </div>
+            <!-- card body -->
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titolo</th>
+                            <th class="text-center">Descrizione</th>
+                            <th>Genere</th>
+                            <th>Azioni</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php if($movies): ?>
+                        <?php foreach($movies as $movie) : ?>
+                            <tr>
+                                <td><?php echo $movie['title'] ?></td>
+                                <td class="px-5">
+									<?php
+										$description = strlen($movie['description']) > 500 ? substr($movie['description'],0,500)."..." : $movie['description'];
+										echo $description;
+									?>
+								</td>
+                                <td><?php echo $movie['genre'] ?></td>
+                                <td>
+									<div class="dropdown">
+            								<button class="btn btn-secondary dropdown-toggle" 
+												type="button" id="dropdownMenuButton" 
+												data-toggle="dropdown" 
+												aria-expanded="false">
+            								</button>
+            							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              								<a href="<?php echo base_url('show/' . $movie['id']) ?>" class="dropdown-item">Vedi</a>
+              								<a href="" class=" dropdown-item">Modifica</a>
+              									<button type="button" 
+                                                    onclick="delete_data(<?php echo $movie['id'] ?>)" 
+                                                    class="dropdown-item">
+                                                    Elimina
+                                                </button>
+            							</div>
+         							</div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-		<table>
-            <thead>
-                <tr>
-                    <th>Titolo</th>
-                    <th>Descrizione</th>
-                    <th>Genere</th>
-					<th>Azioni</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if($movies): ?>
-                <?php foreach($movies as $movie) : ?>
-                <tr>
-                    <td><?php echo $movie['title'] ?></td>
-                    <td><?php echo $movie['description'] ?></td>
-                    <td><?php echo $movie['genre'] ?></td>
-					<td class="">
-					<div class="dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-						</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a href="" class=" dropdown-item">Modifica</a>
-						<form class="d-inline delete-button" action="" method="POST">
-						<!-- @csrf
-						@method('DELETE') -->
-						<button type="button" onclick="delete_data(<?php echo $movie['id'] ?>)" class="dropdown-item">Elimina</button>
-						</form>
-						</div>
-					</div>  
-        			</td>
-                </tr>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
+    </section>
 </main>
+
 
 <!-- FOOTER -->
 
 <footer>
 
 </footer>
+
 
 <!-- SCRIPTS -->
 
@@ -293,8 +325,6 @@
 		return false;
 	}
 </script>
-
-<!-- -->
 
 </body>
 </html>

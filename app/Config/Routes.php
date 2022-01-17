@@ -37,7 +37,7 @@ $routes->get('/', 'MovieController::index');
 $routes->add('/create', 'MovieController::add');
 $routes->add('/create_validation', 'MovieController::add_validation');
 $routes->delete('/delete/(:id)', 'MovieController::delete');
-
+$routes->get('show/(:id)', 'MovieController::show/$id');
 
 /*
  * --------------------------------------------------------------------
