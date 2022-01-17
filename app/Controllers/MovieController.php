@@ -17,10 +17,12 @@ class Moviecontroller extends BaseController
         return view('home', $data);
     }
 
+
     public function add()
     {
         return view('create');
     }
+
 
     public function add_validation()
     {
@@ -28,7 +30,6 @@ class Moviecontroller extends BaseController
 
         $error = $this->validate([
             'title' => 'required|min_length[1]',
-            'description',
             'genre' => 'required|min_length[3]'
         ]);
 
@@ -47,15 +48,59 @@ class Moviecontroller extends BaseController
                 'genre' => $this->request->getVar('genre')
             ]);
 
+            
             $session = \Config\Services::session();
-
             $session->setFlashdata('success', 'Film aggiunto con successo');
 
             return $this->response->redirect(site_url('/'));
         }
     }
 
- 
+    public function edit($id = null)
+    {
+        $movie = new Movie();
+
+        $data['movies'] = $movie->where('id', $id)->first();
+
+        return view('edit', $data);
+    }
+
+
+    public function edit_validation()
+    {
+        helper(['form', 'url']);
+
+        $error = $this->validate([
+            'title' => 'required|min_length[1]',
+            'genre' => 'required|min_length[3]'
+        ]);
+
+        if(!$error)
+        {
+            echo view('edit', [
+                'error' => $this->validator
+            ]);
+        }
+        else
+        {
+            $movie = new Movie();
+            $id = $this->request->getVar('id');
+
+            $movie = [
+                'name' => $this->request->getVar('name'),
+                'description' => $this->request->getVar('description'),
+                'genre' => $this->request->getVar('genre')
+            ];
+
+            $movie->update($id, $data);
+
+            $session = \Config\Services::session();
+            $session->setFlashdata('success', 'Film modificato con successo');
+
+            return $this->response->redirect(site_url('/'));
+        }
+    }
+
 
     public function delete($id)
     {
